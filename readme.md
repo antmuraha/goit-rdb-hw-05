@@ -48,13 +48,16 @@ SELECT
 FROM
 	order_details od
 WHERE
+	EXISTS
 	(
 	SELECT
-		o.shipper_id
+		shipper_id
 	FROM
-		orders o
+		orders
 	WHERE
-		o.id = od.order_id) = 3;
+		id = od.order_id
+		AND shipper_id = 3
+	);
 ```
 
 **Result:**
